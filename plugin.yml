@@ -1,0 +1,6 @@
+name: SignCommandPlugin
+main: KukukuWan\SignCommandPlugin\Main
+version: 1.0.0
+api: [5.0.0]
+author: KukukuWan
+description: Touching a sign with command text executes that command.
