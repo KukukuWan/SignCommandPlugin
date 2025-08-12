@@ -15,8 +15,6 @@ class Main extends PluginBase implements Listener {
     }
 
     public function onPlayerInteract(PlayerInteractEvent $event): void {
-        $event->cancel();
-        
         $player = $event->getPlayer();
         $block = $event->getBlock();
         $world = $player->getWorld();
@@ -29,6 +27,7 @@ class Main extends PluginBase implements Listener {
             $line2 = $text->getLine(1);
 
             if (strtolower(trim($line1)) === "[cmd]" && str_starts_with($line2, "/")) {
+                $event->cancel();
                 $command = substr($line2, 1);
                 $this->getServer()->dispatchCommand($player, $command);
             }
