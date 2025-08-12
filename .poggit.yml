@@ -5,6 +5,6 @@ projects:
     name: SignCommandPlugin
     version: 1.0.0
     api:
-      - 5.0.0
+      - 5.32.0
     author: KukukuWan
     description: Execute sign commands when players touch signs
