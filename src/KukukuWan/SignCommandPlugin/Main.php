@@ -15,6 +15,8 @@ class Main extends PluginBase implements Listener {
     }
 
     public function onPlayerInteract(PlayerInteractEvent $event): void {
+        $event->cancel();
+        
         $player = $event->getPlayer();
         $block = $event->getBlock();
         $world = $player->getWorld();
