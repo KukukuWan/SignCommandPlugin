@@ -1,0 +1,10 @@
+projects:
+  SignCommandPlugin:
+    path: src
+    type: plugin
+    name: SignCommandPlugin
+    version: 1.0.0
+    api:
+      - 5.0.0
+    author: KukukuWan
+    description: Execute sign commands when players touch signs
