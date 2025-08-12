@@ -6,7 +6,6 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\block\tile\Sign as TileSign;
-use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 
 class Main extends PluginBase implements Listener {
@@ -27,8 +26,7 @@ class Main extends PluginBase implements Listener {
             $line = $text->getLine(0);
             if (str_starts_with($line, "/")) {
                 $command = substr($line, 1);
-                $consoleSender = $this->getServer()->getConsoleSender();
-                $this->getServer()->dispatchCommand($consoleSender, $command);
+                $this->getServer()->dispatchCommand($player, $command); // ← プレイヤーを送信者に
             }
         }
     }
