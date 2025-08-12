@@ -1,6 +1,6 @@
 name: SignCommandPlugin
 main: KukukuWan\SignCommandPlugin\Main
 version: 1.0.0
-api: [5.0.0]
+api: [5.32.0]
 author: KukukuWan
-description: Touching a sign with command text executes that command.
+description: Execute sign commands when players touch signs
