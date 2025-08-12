@@ -1,6 +1,6 @@
 projects:
   SignCommandPlugin:
-    path: src
+    path: ""
     type: plugin
     name: SignCommandPlugin
     version: 1.0.0
