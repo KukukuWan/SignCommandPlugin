@@ -23,10 +23,12 @@ class Main extends PluginBase implements Listener {
         $tile = $world->getTile($pos);
         if ($tile instanceof TileSign) {
             $text = $tile->getText();
-            $line = $text->getLine(0);
-            if (str_starts_with($line, "/")) {
-                $command = substr($line, 1);
-                $this->getServer()->dispatchCommand($player, $command); // ← プレイヤーを送信者に
+            $line1 = $text->getLine(0);
+            $line2 = $text->getLine(1);
+
+            if (strtolower(trim($line1)) === "[cmd]" && str_starts_with($line2, "/")) {
+                $command = substr($line2, 1);
+                $this->getServer()->dispatchCommand($player, $command);
             }
         }
     }
