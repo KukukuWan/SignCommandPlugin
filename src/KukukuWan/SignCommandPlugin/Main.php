@@ -5,9 +5,10 @@ namespace KukukuWan\SignCommandPlugin;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\block\Sign;
-use pocketmine\block\utils\SignText;
-use pocketmine\command\ConsoleCommandSender;
+use pocketmine\block\tile\Sign as TileSign;
+use pocketmine\command\CommandSender;
+use pocketmine\math\Vector3;
+use pocketmine\player\Player;
 
 class Main extends PluginBase implements Listener {
 
@@ -16,13 +17,19 @@ class Main extends PluginBase implements Listener {
     }
 
     public function onPlayerInteract(PlayerInteractEvent $event): void {
+        $player = $event->getPlayer();
         $block = $event->getBlock();
-        if ($block instanceof Sign) {
-            $text = $block->getText();
+        $world = $player->getWorld();
+        $pos = $block->getPosition();
+
+        $tile = $world->getTile($pos);
+        if ($tile instanceof TileSign) {
+            $text = $tile->getText();
             $line = $text->getLine(0);
             if (str_starts_with($line, "/")) {
                 $command = substr($line, 1);
-                $this->getServer()->dispatchCommand(new ConsoleCommandSender(), $command);
+                $consoleSender = $this->getServer()->getCommandMap()->getConsoleSender();
+                $this->getServer()->dispatchCommand($consoleSender, $command);
             }
         }
     }
